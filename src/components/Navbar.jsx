@@ -1,15 +1,35 @@
-import React from "react";
-// eslint-disable-next-line no-unused-vars
+import React, { useEffect, useState } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
-import logo from "../assets/logo.png"; 
-import france  from "../assets/france.png";
-import anglaiss  from "../assets/anglaiss.png";
+import logo from "../assets/logo.png";
+import france from "../assets/france.png";
+import anglaiss from "../assets/anglaiss.png";
 
 export default function MyNavbar() {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Nettoyage
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-light py-3 px-4 position-relative">
+      <nav
+        className={`navbar navbar-expand-lg bg-light py-3 px-4 ${
+          isSticky ? "fixed-top shadow-sm" : "position-relative"
+        }`}
+        style={{
+          transition: "all 0.3s ease",
+          zIndex: 999
+        }}
+      >
         <div className="container-fluid">
           {/* Logo */}
           <a className="navbar-brand d-flex align-items-center" href="/">
@@ -19,7 +39,7 @@ export default function MyNavbar() {
             </strong>
           </a>
 
-          {/* Bouton mobile: navbar menu */}
+          {/* Bouton mobile */}
           <button
             className="navbar-toggler d-lg-none"
             type="button"
@@ -32,7 +52,7 @@ export default function MyNavbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          {/* Menu navigation (affiché sur mobile/desktop) */}
+          {/* Menu */}
           <div className="collapse navbar-collapse" id="navbarContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -46,17 +66,12 @@ export default function MyNavbar() {
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  aria-haspopup="true"
                 >
                   NOS APPARTEMENTS
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#voiture1">Voiture 1</a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#voiture2">Voiture 2</a>
-                  </li>
+                  <li><a className="dropdown-item" href="#voiture1">Appartement 1</a></li>
+                  <li><a className="dropdown-item" href="#voiture2">Appartement 2</a></li>
                 </ul>
               </li>
               <li className="nav-item">
@@ -68,7 +83,7 @@ export default function MyNavbar() {
             </ul>
           </div>
 
-          {/* Sélecteur de langue + bouton Réservez */}
+          {/* Langue + Réservez */}
           <div className="d-flex align-items-center gap-3">
             <div className="d-flex align-items-center gap-2">
               <img src={france} alt="FR" width="20" />
@@ -77,7 +92,6 @@ export default function MyNavbar() {
               </div>
               <img src={anglaiss} alt="EN" width="18" />
             </div>
-            {/* Bouton RÉSERVEZ */}
             <button
               className="btn btn-primary"
               style={{ backgroundColor: "#6f42c1", color: "white" }}
@@ -86,7 +100,7 @@ export default function MyNavbar() {
             </button>
           </div>
 
-          {/* Bouton PC: Infos entreprise */}
+          {/* Offcanvas (infos entreprise) */}
           <button
             className="btn d-none d-lg-block"
             type="button"
@@ -100,7 +114,7 @@ export default function MyNavbar() {
         </div>
       </nav>
 
-      {/* Offcanvas pour PC – Infos entreprise */}
+      {/* Offcanvas infos entreprise */}
       <div
         className="offcanvas offcanvas-end text-bg-dark"
         tabIndex="-1"
@@ -120,18 +134,18 @@ export default function MyNavbar() {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <p><strong>Address:</strong> Entrée Simbok, Yaoundé</p>
-          <p><strong>Call Us:</strong><br />
+          <p><strong>Adresse:</strong> Entrée Simbok, Yaoundé</p>
+          <p><strong>Appelez-nous:</strong><br />
             +237 655 00 49 95<br />
             +237 695 89 96 48<br />
             +33 616 63 42 37
           </p>
           <p><strong>Email:</strong> contact@AppartEase.com</p>
           <div className="d-flex gap-3 mt-3">
-            <a href="https://facebook.com " target="_blank" rel="noreferrer">
+            <a href="https://facebook.com" target="_blank" rel="noreferrer">
               <i className="bi bi-facebook fs-4 text-white"></i>
             </a>
-            <a href="https://instagram.com " target="_blank" rel="noreferrer">
+            <a href="https://instagram.com" target="_blank" rel="noreferrer">
               <i className="bi bi-instagram fs-4 text-white"></i>
             </a>
           </div>
