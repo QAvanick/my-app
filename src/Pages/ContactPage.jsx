@@ -2,16 +2,29 @@ import React, { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 import { Link } from "react-router-dom";
 import { Toast, ToastContainer } from 'react-bootstrap';
+import ReCAPTCHA from "react-google-recaptcha";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function ContactPage() {
   const form = useRef();
   const [status, setStatus] = useState("");
   const [showToast, setShowToast] = useState(false);
-  const [toastType, setToastType] = useState("success"); // 'success' ou 'danger'
+  const [toastType, setToastType] = useState("success");
+  const [captchaValue, setCaptchaValue] = useState(null);
+
+  const handleCaptchaChange = (value) => {
+    setCaptchaValue(value);
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    if (!captchaValue) {
+      setStatus("❌ Veuillez valider le reCAPTCHA.");
+      setToastType("danger");
+      setShowToast(true);
+      return;
+    }
 
     emailjs.sendForm(
       'service_nuy0ff5',
@@ -23,6 +36,7 @@ export default function ContactPage() {
       setToastType("success");
       setShowToast(true);
       form.current.reset();
+      setCaptchaValue(null); // reset captcha si besoin
     }).catch((error) => {
       setStatus("❌ Une erreur est survenue. Veuillez réessayer.");
       setToastType("danger");
@@ -49,7 +63,7 @@ export default function ContactPage() {
         </Toast>
       </ToastContainer>
 
-      {/* 🧭 Section Hero avec image + breadcrumb */}
+      {/* 🧭 Section Hero */}
       <section
         className="d-flex align-items-center justify-content-center text-center text-white"
         style={{
@@ -76,13 +90,13 @@ export default function ContactPage() {
           <h1 className="fw-bold">Contact</h1>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb justify-content-center">
-              <li className="breadcrumb-item" >
+              <li className="breadcrumb-item">
                 <Link to="/" className="text-white text-decoration-none">
                   Accueil
                 </Link>
               </li>
-              <li className="breadcrumb-item active text-white" aria-current="page">/
-                Nous contacter
+              <li className="breadcrumb-item active text-white" aria-current="page">
+                / Nous contacter
               </li>
             </ol>
           </nav>
@@ -91,45 +105,43 @@ export default function ContactPage() {
 
       {/* 📞 Section Contact */}
       <div className="container py-5">
-        <h2 className="mb-4 text-center">Contactez-nous</h2>
+        <h2 className="mb-4 text-center">📞Contactez-nous</h2>
 
         <div className="row g-4">
           {/* 📝 Formulaire */}
           <div className="col-md-6">
             <form ref={form} onSubmit={sendEmail} className="bg-light p-4 rounded shadow-sm">
               <div className="mb-3">
-                <label className="form-label">
-                  Nom <span className="text-danger">*</span>
-                </label>
+                <label className="form-label">Nom <span className="text-danger">*</span></label>
                 <input type="text" name="user_name" className="form-control" required />
               </div>
 
               <div className="mb-3">
-                <label className="form-label">
-                  Email <span className="text-danger">*</span>
-                </label>
+                <label className="form-label">Email <span className="text-danger">*</span></label>
                 <input type="email" name="user_email" className="form-control" required />
               </div>
 
               <div className="mb-3">
-                <label className="form-label">
-                  Téléphone <span className="text-danger">*</span>
-                </label>
+                <label className="form-label">Téléphone <span className="text-danger">*</span></label>
                 <input type="tel" name="user_phone" className="form-control" required />
               </div>
 
               <div className="mb-3">
-                <label className="form-label">
-                  Objet <span className="text-danger">*</span>
-                </label>
+                <label className="form-label">Objet <span className="text-danger">*</span></label>
                 <input type="text" name="user_subject" className="form-control" required />
               </div>
 
               <div className="mb-3">
-                <label className="form-label">
-                  Message <span className="text-danger">*</span>
-                </label>
+                <label className="form-label">Message <span className="text-danger">*</span></label>
                 <textarea name="message" rows="5" className="form-control" required></textarea>
+              </div>
+
+              {/* ✅ reCAPTCHA */}
+              <div className="mb-3">
+                <ReCAPTCHA
+                  sitekey="6LeBroYrAAAAAHOwFUayCHRZeYvvwTIP0V74z3ra" // ⛔️ Remplace ceci !
+                  onChange={handleCaptchaChange}
+                />
               </div>
 
               <button type="submit" className="btn btn-primary w-100">Envoyer</button>
