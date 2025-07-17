@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 import logo from "../assets/logo.png";
 import france from "../assets/france.png";
@@ -107,7 +106,7 @@ export default function MyNavbar() {
             data-bs-toggle="offcanvas"
             data-bs-target="#companyInfo"
             aria-controls="companyInfo"
-            style={{ color: "#6f42c1" }}
+          
           >
             ☰ <strong>Infos</strong>
           </button>
