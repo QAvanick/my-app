@@ -60,7 +60,7 @@ export default function MyNavbar() {
                 </ul>
               </li>
               <li className="nav-item">
-                <a className="nav-link fw-bold" href="#apropos">A PROPOS</a>
+                <a className="nav-link fw-bold" href="/a-propos">A PROPOS</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link fw-bold" href="/contact">NOUS CONTACTER</a>

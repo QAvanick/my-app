@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './Pages/HomePage';
 import ContactPage from './Pages/ContactPage';
+import AboutPage from './Pages/AboutPage';
 
 import { WhatsAppWidget } from 'react-whatsapp-widget'; // ✅ correction ici
 import 'react-whatsapp-widget/dist/index.css';
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/a-propos" element={<AboutPage />} />
       </Routes>
 
       <Footer />

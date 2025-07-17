@@ -76,12 +76,12 @@ export default function ContactPage() {
           <h1 className="fw-bold">Contact</h1>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb justify-content-center">
-              <li className="breadcrumb-item">
+              <li className="breadcrumb-item" >
                 <Link to="/" className="text-white text-decoration-none">
                   Accueil
                 </Link>
               </li>
-              <li className="breadcrumb-item active text-white" aria-current="page">
+              <li className="breadcrumb-item active text-white" aria-current="page">/
                 Nous contacter
               </li>
             </ol>
