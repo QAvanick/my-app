@@ -100,16 +100,22 @@ export default function MyNavbar() {
           </div>
 
           {/* Offcanvas (infos entreprise) */}
-          <button
-            className="btn d-none d-lg-block"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#companyInfo"
-            aria-controls="companyInfo"
-          
-          >
-            ☰ <strong>Infos</strong>
-          </button>
+       <button
+  className="btn d-none d-lg-block"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#companyInfo"
+  aria-controls="companyInfo"
+  style={{
+    backgroundColor: "transparent",   // ✅ fond transparent
+    color: "#333",                     // ✅ texte foncé (ou blanc selon ton fond)
+    border: "none",                    // ✅ sans bordure
+    boxShadow: "none"                  // ✅ pas d'ombre
+  }}
+>
+  ☰ <strong>Infos</strong>
+</button>
+
         </div>
       </nav>
 
