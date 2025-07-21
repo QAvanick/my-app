@@ -54,7 +54,7 @@ export default function HomePage() {
 
           .icon {
             font-size: 24px;
-            color: #007bff;
+            color: #6f42c1;
           }
 
           .feature-item h3 {
@@ -83,16 +83,15 @@ export default function HomePage() {
             background-color: #5d3fc2;
           }
 
-         .image-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin: 30px auto;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  padding: 0 10px; /* ✅ espace intérieur pour mobile */
-}
-
+          .image-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 30px auto;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            padding: 0 10px;
+          }
 
           .image-wrapper {
             flex: 1;
@@ -101,7 +100,7 @@ export default function HomePage() {
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease;
-            margin: 0 10px; /* ✅ marge extérieure gauche et droite */
+            margin: 0 10px;
           }
 
           .image-wrapper:hover {
@@ -113,6 +112,85 @@ export default function HomePage() {
             height: 340px;
             object-fit: cover;
             display: block;
+          }
+
+          /* === NOUVEAU STYLE POUR LA SECTION APPARTEMENT === */
+          .appartement-section {
+            background-color: #ffffff;
+            padding: 60px 20px;
+            text-align: left;
+            margin-top: 30px;
+          }
+
+          .appartement-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 30px;
+          }
+
+          .appartement-text {
+            flex: 1;
+            min-width: 300px;
+          }
+
+          .appartement-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+          }
+
+          .appartement-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+          }
+
+          .appartement-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 0;
+          }
+
+          .appartement-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            width: 48%;
+          }
+
+          .appartement-feature .icon {
+            font-size: 24px;
+            color: #6f42c1;
+            flex-shrink: 0;
+          }
+
+          .appartement-feature h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+          }
+
+          .appartement-feature p {
+            font-size: 0.9rem;
+            color: #666;
+          }
+
+          .appartement-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          }
+
+          .appartement-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
           }
         `}
       </style>
@@ -126,7 +204,7 @@ export default function HomePage() {
               className="d-flex align-items-center justify-content-center text-white text-center"
               style={{
                 backgroundImage:
-                  "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg')",
+                  "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg ')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "500px",
@@ -158,7 +236,7 @@ export default function HomePage() {
               className="d-flex align-items-center justify-content-center text-white text-center"
               style={{
                 backgroundImage:
-                  "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg')",
+                  "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg ')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "500px",
@@ -190,7 +268,7 @@ export default function HomePage() {
               className="d-flex align-items-center justify-content-center text-white text-center"
               style={{
                 backgroundImage:
-                  "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg')",
+                  "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg ')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "500px",
@@ -228,6 +306,55 @@ export default function HomePage() {
         </button>
       </div>
 
+      {/* === SECTION APPARTEMENT === */}
+      <section className="appartement-section">
+        <div className="appartement-container">
+          <div className="appartement-text">
+            <h2>Nos appartements modernes et bien équipés</h2>
+            <p>
+              Découvrez nos appartements conçus pour votre confort et votre bien-être. Chaque logement est doté de technologies modernes et de commodités haut de gamme pour vous offrir un séjour inoubliable.
+            </p>
+            <div className="appartement-features">
+              <div className="appartement-feature">
+                <FaHome className="icon" />
+                <div>
+                  <h3>Chambres spacieuses</h3>
+                  <p>Des espaces bien aménagés pour votre détente.</p>
+                </div>
+              </div>
+              <div className="appartement-feature">
+                <FaHome className="icon" />
+                <div>
+                  <h3>Cuisine équipée</h3>
+                  <p>Four, micro-ondes, réfrigérateur et plus encore.</p>
+                </div>
+              </div>
+              <div className="appartement-feature">
+                <FaHome className="icon" />
+                <div>
+                  <h3>Salon moderne</h3>
+                  <p>Un espace convivial pour profiter de moments en famille ou entre amis.</p>
+                </div>
+              </div>
+              <div className="appartement-feature">
+                <FaHome className="icon" />
+                <div>
+                  <h3>Balcon ou terrasse</h3>
+                  <p>Profitez d’un espace extérieur pour vous détendre.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="appartement-image">
+            <img
+              src="https://i.ytimg.com/vi/G-V2QET0a-w/maxresdefault.jpg"
+              alt="Appartement moderne"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* === SECTION DES OPTIONS === */}
       <div className="feature-section">
         <div className="feature-item">
@@ -264,7 +391,7 @@ export default function HomePage() {
       <div className="image-section">
         <div className="image-wrapper">
           <img
-            src="https://www.mubawab-media.com/ad/7/605/820F/h/Les%20Jardins%20de%20Mesnana%20Golf%2010_23373814_30445580_37956215_37956293_37956509.jpg"
+            src=" https://www.mubawab-media.com/ad/7/605/820F/h/Les%20Jardins%20de%20Mesnana%20Golf%2010_23373814_30445580_37956215_37956293_37956509.jpg "
             alt="Appartement moderne 1"
           />
         </div>
