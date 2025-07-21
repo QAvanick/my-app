@@ -55,7 +55,7 @@ export default function MyNavbar() {
           <div className="collapse navbar-collapse" id="navbarContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link fw-bold" href="#accueil">ACCUEIL</a>
+                <a className="nav-link fw-bold" href="/">ACCUEIL</a>
               </li>
               <li className="nav-item dropdown">
                 <a

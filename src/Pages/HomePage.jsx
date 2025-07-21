@@ -397,7 +397,7 @@ export default function HomePage() {
         </div>
         <div className="image-wrapper">
           <img
-            src="https://tse4.mm.bing.net/th/id/OIP.jk7KzAi99hz4HiSvqr3fLwHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+            src="https://altusrealty.it/wp-content/uploads/2022/02/Altus-Lifestyle-Lungarno-Guicciardini-1.jpg"
             alt="Appartement moderne 2"
           />
         </div>
