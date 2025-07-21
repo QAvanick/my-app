@@ -144,7 +144,7 @@ export default function ContactPage() {
                 />
               </div>
 
-              <button type="submit" className="btn btn-primary w-100">Envoyer</button>
+              <button type="submit" style={{ backgroundColor: "#6f42c1" }} className="btn  w-100">Envoyer</button>
             </form>
           </div>
 
