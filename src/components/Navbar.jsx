@@ -1,144 +1,79 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
+import {
+  Navbar,
+  Nav,
+  Container,
+  NavDropdown,
+  Button,
+  Offcanvas
+} from "react-bootstrap";
 import logo from "../assets/logo.png";
 import france from "../assets/france.png";
 import anglaiss from "../assets/anglaiss.png";
 
 export default function MyNavbar() {
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Nettoyage
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [showInfo, setShowInfo] = useState(false);
 
   return (
     <>
-      <nav
-        className={`navbar navbar-expand-lg bg-light py-3 px-4 ${
-          isSticky ? "fixed-top shadow-sm" : "position-relative"
-        }`}
-        style={{
-          transition: "all 0.3s ease",
-          zIndex: 999
-        }}
+      <Navbar
+        bg="light"
+        expand="lg"
+        fixed="top"
+        className="shadow-sm py-3 px-4"
       >
-        <div className="container-fluid">
-          {/* Logo */}
-          <a className="navbar-brand d-flex align-items-center" href="/">
+        <Container fluid>
+          <Navbar.Brand href="/" className="d-flex align-items-center">
             <img src={logo} alt="Logo" width="40" height="40" className="me-2" />
             <strong>
               Appart <span style={{ color: "#6f42c1" }}>Ease</span>
             </strong>
-          </a>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav className="mx-auto my-2 my-lg-0" navbarScroll>
+              <Nav.Link href="/" className="fw-bold">ACCUEIL</Nav.Link>
+              <NavDropdown title="NOS APPARTEMENTS" className="fw-bold">
+                <NavDropdown.Item href="#voiture1">Appartement 1</NavDropdown.Item>
+                <NavDropdown.Item href="#voiture2">Appartement 2</NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link href="/a-propos" className="fw-bold">A PROPOS</Nav.Link>
+              <Nav.Link href="/contact" className="fw-bold">NOUS CONTACTER</Nav.Link>
+            </Nav>
 
-          {/* Bouton mobile */}
-          <button
-            className="navbar-toggler d-lg-none"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarContent"
-            aria-controls="navbarContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          {/* Menu */}
-          <div className="collapse navbar-collapse" id="navbarContent">
-            <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link fw-bold" href="/">ACCUEIL</a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle fw-bold"
-                  href="#!"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  NOS APPARTEMENTS
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item" href="#voiture1">Appartement 1</a></li>
-                  <li><a className="dropdown-item" href="#voiture2">Appartement 2</a></li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link fw-bold" href="/a-propos">A PROPOS</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link fw-bold" href="/contact">NOUS CONTACTER</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Langue + Réservez */}
-          <div className="d-flex align-items-center gap-3">
-            <div className="d-flex align-items-center gap-2">
-              <img src={france} alt="FR" width="20" />
-              <div className="form-check form-switch mb-0">
-                <input className="form-check-input" type="checkbox" id="langSwitch" />
+            {/* Langues + Réservez + Infos */}
+            <div className="d-flex align-items-center gap-3">
+              <div className="d-flex align-items-center gap-2">
+                <img src={france} alt="FR" width="20" />
+                <div className="form-check form-switch mb-0">
+                  <input className="form-check-input" type="checkbox" id="langSwitch" />
+                </div>
+                <img src={anglaiss} alt="EN" width="18" />
               </div>
-              <img src={anglaiss} alt="EN" width="18" />
+              <Button style={{ backgroundColor: "#6f42c1", border: "none" }}>
+                RÉSERVEZ
+              </Button>
+              <Button
+                variant="outline-dark"
+                className="d-none d-lg-block"
+                onClick={() => setShowInfo(true)}
+              >
+                ☰ <strong>Infos</strong>
+              </Button>
             </div>
-            <button
-              className="btn btn-primary"
-              style={{ backgroundColor: "#6f42c1", color: "white" }}
-            >
-              RÉSERVEZ
-            </button>
-          </div>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-          {/* Offcanvas (infos entreprise) */}
-       <button
-  className="btn d-none d-lg-block"
-  type="button"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#companyInfo"
-  aria-controls="companyInfo"
-  style={{
-    backgroundColor: "transparent",   // ✅ fond transparent
-    color: "#333",                     // ✅ texte foncé (ou blanc selon ton fond)
-    border: "none",                    // ✅ sans bordure
-    boxShadow: "none"                  // ✅ pas d'ombre
-  }}
->
-  ☰ <strong>Infos</strong>
-</button>
-
-        </div>
-      </nav>
-
-      {/* Offcanvas infos entreprise */}
-      <div
-        className="offcanvas offcanvas-end text-bg-dark"
-        tabIndex="-1"
-        id="companyInfo"
-        aria-labelledby="companyInfoLabel"
-      >
-        <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="companyInfoLabel">
+      {/* OFFCANVAS */}
+      <Offcanvas show={showInfo} onHide={() => setShowInfo(false)} placement="end" className="bg-dark text-white">
+        <Offcanvas.Header closeButton closeVariant="white">
+          <Offcanvas.Title>
             <img src={logo} alt="Logo" width="40" className="me-2" />
             AppartEase
-          </h5>
-          <button
-            type="button"
-            className="btn-close btn-close-white"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div className="offcanvas-body">
+          </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
           <p><strong>Adresse:</strong> Entrée Simbok, Yaoundé</p>
           <p><strong>Appelez-nous:</strong><br />
             +237 655 00 49 95<br />
@@ -154,8 +89,8 @@ export default function MyNavbar() {
               <i className="bi bi-instagram fs-4 text-white"></i>
             </a>
           </div>
-        </div>
-      </div>
+        </Offcanvas.Body>
+      </Offcanvas>
     </>
   );
 }
