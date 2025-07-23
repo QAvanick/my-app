@@ -6,28 +6,25 @@ import HomePage from './Pages/HomePage';
 import ContactPage from './Pages/ContactPage';
 import AboutPage from './Pages/AboutPage';
 import AppartementsPage from './components/AppartementsPage';
+import AppartementDetail from './Pages/AppartementDetail'; // ✅ Import ici
 
-
-import { FaWhatsapp } from 'react-icons/fa'; // ✅ Icône WhatsApp
+import { FaWhatsapp } from 'react-icons/fa';
 
 function App() {
   return (
     <Router>
       <Navbar />
 
-      {/* 🔻 Section principale de la page */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/a-propos" element={<AboutPage />} />
-  
         <Route path="/appartements" element={<AppartementsPage />} />
-
+        <Route path="/AppartementDetail/:id" element={<AppartementDetail />} /> {/* ✅ Route ajoutée */}
       </Routes>
 
       <Footer />
 
-      {/* ✅ Bouton WhatsApp avec vraie icône */}
       <a
         href="https://wa.me/237656947951"
         target="_blank"

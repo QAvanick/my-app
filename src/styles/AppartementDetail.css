@@ -1,0 +1,278 @@
+.detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px 20px; /* On augmente le padding haut */
+  gap: 30px;
+  margin-top: 40px; /* Ajoute de l’espace depuis le haut de la page */
+}
+
+.left-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.main-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thumbnails img {
+  width: 60px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.thumbnails img:hover,
+.thumbnails img.active {
+  border-color: #6f42c1;
+  box-shadow: 0 0 5px #6f42c1;
+  transform: scale(1.05);
+}
+
+.right-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.detail-title {
+  font-size: 24px;
+  color: #6f42c1;
+  text-shadow: 1px 1px 2px #ccc;
+  margin-bottom: 15px;
+}
+
+.form-reservation {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-reservation label {
+  font-weight: bold;
+}
+
+.form-reservation input,
+.form-reservation textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.form-reservation button {
+  padding: 10px;
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-reservation button:hover {
+  background-color: #5930a6;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row div {
+  flex: 1;
+}
+.detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 20px 50px;
+  margin-top: 30px;
+}
+
+.left-section {
+  flex: 1;
+  max-width: 600px;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.thumbnails img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+
+.thumbnails img.active {
+  border: 2px solid #007bff;
+}
+
+.right-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.detail-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-reservation {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-reservation input,
+.form-reservation textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-reservation button {
+  background-color: #6f42c1;
+  color: white;
+  padding: 12px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-reservation button:hover {
+  background-color: #0056b3;
+}
+
+
+.caracteristiques {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.caracteristiques h4 {
+  margin-bottom: 10px;
+  color: #343a40;
+}
+
+.caracteristiques ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.caracteristiques li {
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.caracteristiques ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.caracteristiques li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.caracteristiques .icon {
+  margin-right: 10px;
+  color: #6f42c1;
+  font-size: 18px;
+}
+
+
+.caracteristiques ul,
+.options ul {
+  list-style: none;
+  padding: 0;
+}
+
+.caracteristiques li,
+.options li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.icon.check {
+  color: green;
+}
+
+
+/* Zoom overlay */
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.zoom-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.zoom-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 1001;
+}
