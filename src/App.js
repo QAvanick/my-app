@@ -5,7 +5,8 @@ import Footer from './components/Footer';
 import HomePage from './Pages/HomePage';
 import ContactPage from './Pages/ContactPage';
 import AboutPage from './Pages/AboutPage';
-import DetailPage from './Pages/DetailPage';
+import AppartementsPage from './components/AppartementsPage';
+
 
 import { FaWhatsapp } from 'react-icons/fa'; // ✅ Icône WhatsApp
 
@@ -19,7 +20,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/a-propos" element={<AboutPage />} />
-        <Route path="/logement/:id" element={<DetailPage />} />
+  
+        <Route path="/appartements" element={<AppartementsPage />} />
+
       </Routes>
 
       <Footer />

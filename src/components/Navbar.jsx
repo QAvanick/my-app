@@ -33,9 +33,10 @@ export default function MyNavbar() {
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto my-2 my-lg-0" navbarScroll>
               <Nav.Link href="/" className="fw-bold">ACCUEIL</Nav.Link>
-              <NavDropdown title="NOS APPARTEMENTS" className="fw-bold">
-                <NavDropdown.Item href="#voiture1">Appartement 1</NavDropdown.Item>
-                <NavDropdown.Item href="#voiture2">Appartement 2</NavDropdown.Item>
+              <NavDropdown title="Nos Locations" className="fw-bold">
+                <NavDropdown.Item href="/Appartements">Appartements </NavDropdown.Item>
+                <NavDropdown.Item href="#voiture2">Studio Modernes</NavDropdown.Item>
+                <NavDropdown.Item href="#voiture2">Chambres Modernes</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/a-propos" className="fw-bold">A PROPOS</Nav.Link>
               <Nav.Link href="/contact" className="fw-bold">NOUS CONTACTER</Nav.Link>
@@ -56,6 +57,7 @@ export default function MyNavbar() {
               <Button
                 variant="outline-dark"
                 className="d-none d-lg-block"
+                style={{ backgroundColor: "transparent", border: "none", boxShadow: "none", color: "#000" }}
                 onClick={() => setShowInfo(true)}
               >
                 ☰ <strong>Infos</strong>
