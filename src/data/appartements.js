@@ -11,9 +11,9 @@ const appartements = [
     sallesDeBain: 1,
     imagePrincipale: "/images/appart.png",
     galerie: [
+      "/images/appart2.jpg",
       "/images/appart.png",
-      "/images/appart.png",
-      "/images/appartements/yaounde3.jpg"
+      "/images/appart5.jpg"
     ],
     options: ["Climatisation", "Wifi", "Cuisine équipée", "Parking"],
     disponible: true
@@ -30,8 +30,8 @@ const appartements = [
     sallesDeBain: 1,
     imagePrincipale: "/images/appart2.jpg",
     galerie: [
-      "/images/appartements/douala1.jpg",
-      "/images/appartements/douala2.jpg"
+      "/images/appart5.jpg",
+      "/images/appart.png"
     ],
     options: ["TV", "Climatisation", "Cuisine"],
     disponible: false
@@ -48,8 +48,8 @@ const appartements = [
     sallesDeBain: 2,
     imagePrincipale: "/images/appart3.jpg",
     galerie: [
-      "/images/appartements/kribi1.jpg",
-      "/images/appartements/kribi2.jpg"
+      "/images/appart.png",
+      "/images/appart3.jpg"
     ],
     options: ["Piscine", "Parking", "Balcon", "Wifi"],
     disponible: true
@@ -64,10 +64,10 @@ const appartements = [
     superficie: "40 m²",
     chambres: 1,
     sallesDeBain: 1,
-    imagePrincipale: "/images/appart.png",
+    imagePrincipale: "/images/appart5.jpg",
     galerie: [
-      "/images/appartements/douala3.jpg",
-      "/images/appartements/douala4.jpg"
+      "/images/appart7.jpg",
+      "/images/appart3.jpg"
     ],
     options: ["Wifi", "Cuisine équipée", "Climatisation"],
     disponible: true
@@ -82,11 +82,11 @@ const appartements = [
     superficie: "100 m²",
     chambres: 2,
     sallesDeBain: 2,
-    imagePrincipale: "/images/appart.png",
+    imagePrincipale: "/images/appart6.jpeg",
     galerie: [
-      "/images/appartements/limbe1.jpg",
-      "/images/appartements/limbe2.jpg",
-      "/images/appartements/limbe3.jpg"
+      "/images/appart5.jpg",
+      "/images/appart7.jpg",
+      "/images/appart3.jpg"
     ],
     options: ["Piscine", "Wifi", "Sécurité 24/7", "Parking", "Balcon"],
     disponible: false
@@ -101,10 +101,10 @@ const appartements = [
     superficie: "90 m²",
     chambres: 3,
     sallesDeBain: 2,
-    imagePrincipale: "/images/appart.png",
+    imagePrincipale: "/images/appart7.jpg",
     galerie: [
-      "/images/appartements/bafoussam1.jpg",
-      "/images/appartements/bafoussam2.jpg"
+      "/images/appart3.jpg",
+      "/images/appart7.jpg"
     ],
     options: ["Parking", "Cuisine équipée", "Wifi", "Climatisation"],
     disponible: true

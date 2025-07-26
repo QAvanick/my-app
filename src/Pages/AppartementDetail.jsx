@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   FaRulerCombined,
@@ -10,16 +10,19 @@ import {
   FaCheckCircle,
   FaTimes
 } from "react-icons/fa";
-import appartements from "../data/appartements"; // ✅ Données des appartements
+import appartements from "../data/appartements"; // Données des appartements
+import emailjs from "@emailjs/browser";
 import "../styles/AppartementDetail.css";
 
 export default function AppartementDetail() {
   const { id } = useParams();
-  const appartement = appartements.find(a => a.id === parseInt(id)); // ✅ Recherche par ID
+  const appartement = appartements.find(a => a.id === parseInt(id));
 
   const galerie = Array.isArray(appartement?.galerie) ? appartement.galerie : [];
   const [imageActive, setImageActive] = useState(appartement?.imagePrincipale || "");
   const [isZoomed, setIsZoomed] = useState(false);
+
+  const formRef = useRef();
 
   if (!appartement) {
     return (
@@ -29,6 +32,26 @@ export default function AppartementDetail() {
       </div>
     );
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "ton_service_id",        // Remplace par ton service ID EmailJS
+      "ton_template_id",       // Remplace par ton template ID EmailJS
+      formRef.current,
+      "ta_clef_publique"       // Remplace par ta clé publique EmailJS
+    )
+    .then(() => {
+      alert("Réservation envoyée avec succès !");
+      formRef.current.reset();
+      setImageActive(appartement.imagePrincipale); // reset image si besoin
+    })
+    .catch((error) => {
+      console.error("Erreur lors de l'envoi :", error);
+      alert("Une erreur est survenue lors de l'envoi.");
+    });
+  };
 
   return (
     <>
@@ -102,32 +125,35 @@ export default function AppartementDetail() {
 
         <div className="right-section">
           <h2 className="detail-title">Réservez cet appartement</h2>
-          <form className="form-reservation">
+          <form className="form-reservation" onSubmit={handleSubmit} ref={formRef}>
+            <label>Appartement</label>
+            <input type="text" name="appartement" value={appartement.titre} readOnly style={{ color: "green", fontWeight: "bold" }} />
+
             <label>Nom complet</label>
-            <input type="text" placeholder="Nom et prénom *" required />
+            <input type="text" name="nom" placeholder="Nom et prénom *" required />
 
             <label>Email</label>
-            <input type="email" placeholder="Adresse email *" required />
+            <input type="email" name="email" placeholder="Adresse email *" required />
 
             <label>Téléphone</label>
-            <input type="tel" placeholder="Numéro de téléphone *" required />
+            <input type="tel" name="telephone" placeholder="Numéro de téléphone *" required />
 
             <div className="row">
               <div>
                 <label>Date d’arrivée</label>
-                <input type="date" />
+                <input type="date" name="dateArrivee" required />
               </div>
               <div>
                 <label>Date de départ</label>
-                <input type="date" />
+                <input type="date" name="dateDepart" required />
               </div>
             </div>
 
             <label>Nombre de personnes</label>
-            <input type="number" min="1" defaultValue="1" />
+            <input type="number" name="personnes" min="1" defaultValue="1" required />
 
             <label>Message supplémentaire</label>
-            <textarea placeholder="Message..."></textarea>
+            <textarea name="message" placeholder="Message..."></textarea>
 
             <button type="submit">Réserver</button>
           </form>
