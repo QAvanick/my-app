@@ -7,6 +7,7 @@ import {
   Button,
   Offcanvas
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import france from "../assets/france.png";
 import anglaiss from "../assets/anglaiss.png";
@@ -51,9 +52,16 @@ export default function MyNavbar() {
                 </div>
                 <img src={anglaiss} alt="EN" width="18" />
               </div>
-              <Button style={{ backgroundColor: "#6f42c1", border: "none" }}>
-                RÉSERVEZ
-              </Button>
+              
+              <Button style={{ backgroundColor: "#6f42c1", border: "none", color: "#fff" }}>
+  <Link 
+    to="/Appartements" 
+    style={{ color: "#fff", textDecoration: "none" }}
+  >
+    RÉSERVEZ
+  </Link>
+</Button>
+
               <Button
                 variant="outline-dark"
                 className="d-none d-lg-block"

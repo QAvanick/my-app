@@ -184,7 +184,7 @@
 }
 
 .form-reservation button {
-  background-color: #007bff;
+  background-color: #ffffff;
   color: white;
   padding: 12px;
   border: none;
@@ -195,7 +195,7 @@
 }
 
 .form-reservation button:hover {
-  background-color: #0056b3;
+  background-color: #ffffff;
 }
 
 /* ✅ Responsive : sur petit écran, tout passe en colonne */
