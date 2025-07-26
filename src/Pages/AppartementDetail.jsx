@@ -10,7 +10,7 @@ import {
   FaCheckCircle,
   FaTimes
 } from "react-icons/fa";
-import appartements from "../data/appartements"; // Données des appartements
+import appartements from "../data/appartements";
 import emailjs from "@emailjs/browser";
 import "../styles/AppartementDetail.css";
 
@@ -21,6 +21,11 @@ export default function AppartementDetail() {
   const galerie = Array.isArray(appartement?.galerie) ? appartement.galerie : [];
   const [imageActive, setImageActive] = useState(appartement?.imagePrincipale || "");
   const [isZoomed, setIsZoomed] = useState(false);
+
+  const [dateArrivee, setDateArrivee] = useState("");
+  const [dateDepart, setDateDepart] = useState("");
+  const [nombreJours, setNombreJours] = useState(0);
+  const [coutTotal, setCoutTotal] = useState(0);
 
   const formRef = useRef();
 
@@ -33,33 +38,43 @@ export default function AppartementDetail() {
     );
   }
 
+  const calculerNombreJoursEtCout = (date1, date2) => {
+    if (!date1 || !date2) return;
+    const d1 = new Date(date1);
+    const d2 = new Date(date2);
+    const diffTime = Math.abs(d2 - d1);
+    const jours = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    setNombreJours(jours);
+    setCoutTotal(jours * appartement.prix);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     emailjs.sendForm(
-      "ton_service_id",        // Remplace par ton service ID EmailJS
-      "ton_template_id",       // Remplace par ton template ID EmailJS
+      "service_mq1fcmx",
+      "template_0pqf1hk",
       formRef.current,
-      "ta_clef_publique"       // Remplace par ta clé publique EmailJS
+      "hY_6Su8e5hNAK748L"
     )
-    .then(() => {
-      alert("Réservation envoyée avec succès !");
-      formRef.current.reset();
-      setImageActive(appartement.imagePrincipale); // reset image si besoin
-    })
-    .catch((error) => {
-      console.error("Erreur lors de l'envoi :", error);
-      alert("Une erreur est survenue lors de l'envoi.");
-    });
+      .then(() => {
+        alert("Réservation envoyée avec succès !");
+        formRef.current.reset();
+        setImageActive(appartement.imagePrincipale);
+        setNombreJours(0);
+        setCoutTotal(0);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de l'envoi :", error);
+        alert("Une erreur est survenue lors de l'envoi.");
+      });
   };
 
   return (
     <>
       <div
         className="breadcrumb-banner"
-        style={{
-          backgroundImage: `url('${appartement.imagePrincipale}')`,
-        }}
+        style={{ backgroundImage: `url('${appartement.imagePrincipale}')` }}
       >
         <div className="overlay" />
         <div className="breadcrumb-content">
@@ -141,16 +156,38 @@ export default function AppartementDetail() {
             <div className="row">
               <div>
                 <label>Date d’arrivée</label>
-                <input type="date" name="dateArrivee" required />
+                <input
+                  type="date"
+                  name="dateArrivee"
+                  required
+                  onChange={(e) => {
+                    setDateArrivee(e.target.value);
+                    calculerNombreJoursEtCout(e.target.value, dateDepart);
+                  }}
+                />
               </div>
               <div>
                 <label>Date de départ</label>
-                <input type="date" name="dateDepart" required />
+                <input
+                  type="date"
+                  name="dateDepart"
+                  required
+                  onChange={(e) => {
+                    setDateDepart(e.target.value);
+                    calculerNombreJoursEtCout(dateArrivee, e.target.value);
+                  }}
+                />
               </div>
             </div>
 
             <label>Nombre de personnes</label>
             <input type="number" name="personnes" min="1" defaultValue="1" required />
+
+            <label>Nombre de jours</label>
+            <input type="number" name="nombreJours" value={nombreJours} readOnly />
+
+            <label>Coût total</label>
+            <input type="text" name="coutTotal" value={`${coutTotal.toLocaleString()} FCFA`} readOnly />
 
             <label>Message supplémentaire</label>
             <textarea name="message" placeholder="Message..."></textarea>
