@@ -11,7 +11,7 @@ export default function AppartementsPage() {
       <div className="appartements-grid">
         {appartements.map((apt) => (
           <Link
-            to={`/AppartementDetail/${apt.id}`}
+           to={`/appartement/${apt.id}`}
             key={apt.id}
             className="appartement-card"
             style={{ backgroundImage: `url(${apt.imagePrincipale})` }}

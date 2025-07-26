@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   FaRulerCombined,
   FaBed,
@@ -10,37 +10,32 @@ import {
   FaCheckCircle,
   FaTimes
 } from "react-icons/fa";
+import appartements from "../data/appartements"; // ✅ Données des appartements
 import "../styles/AppartementDetail.css";
 
 export default function AppartementDetail() {
-  const appartement = {
-    titre: "Appartement Moderne à Bonapriso",
-    localisation: "Bonapriso, Douala",
-    imagePrincipale: "/images/appart.png",
-    images: [
-      "/images/appart2.jpg",
-      "/images/appart3.jpg",
-      "/images/appart2.jpg",
-      "/images/appart2.jpg",
-    ],
-    prix: 45000,
-    capacite: 4,
-    chambres: 2,
-    sallesDeBain: 1,
-    superficie: "85m²",
-    options: ["Climatisation", "Wifi", "Cuisine équipée", "Parking"]
-  };
+  const { id } = useParams();
+  const appartement = appartements.find(a => a.id === parseInt(id)); // ✅ Recherche par ID
 
-  const [imageActive, setImageActive] = useState(appartement.imagePrincipale);
-  const [isZoomed, setIsZoomed] = useState(false); // ✅ Pour afficher le zoom
+  const galerie = Array.isArray(appartement?.galerie) ? appartement.galerie : [];
+  const [imageActive, setImageActive] = useState(appartement?.imagePrincipale || "");
+  const [isZoomed, setIsZoomed] = useState(false);
+
+  if (!appartement) {
+    return (
+      <div className="text-center p-5">
+        <h2>Appartement introuvable</h2>
+        <Link to="/appartements">← Retour aux appartements</Link>
+      </div>
+    );
+  }
 
   return (
     <>
-      {/* ✅ BANNIÈRE AVEC IMAGE DE FOND */}
       <div
         className="breadcrumb-banner"
         style={{
-          backgroundImage: `url('/images/appart2.jpg')`,
+          backgroundImage: `url('${appartement.imagePrincipale}')`,
         }}
       >
         <div className="overlay" />
@@ -60,20 +55,17 @@ export default function AppartementDetail() {
         </div>
       </div>
 
-      {/* ✅ CONTENU PRINCIPAL */}
       <div className="detail-container">
-        {/* ✅ SECTION GAUCHE */}
         <div className="left-section">
           <img
             src={imageActive}
             alt={appartement.titre}
             className="main-image"
-            onClick={() => setIsZoomed(true)} // 👉 Clique pour zoomer
+            onClick={() => setIsZoomed(true)}
           />
 
-          {/* Miniatures */}
           <div className="thumbnails">
-            {[appartement.imagePrincipale, ...appartement.images].map((img, index) => (
+            {[appartement.imagePrincipale, ...galerie].map((img, index) => (
               <img
                 key={index}
                 src={img}
@@ -84,7 +76,6 @@ export default function AppartementDetail() {
             ))}
           </div>
 
-          {/* ✅ Caractéristiques avec icônes */}
           <div className="caracteristiques">
             <h4>Caractéristiques</h4>
             <ul>
@@ -96,7 +87,6 @@ export default function AppartementDetail() {
               <li><FaMoneyBillWave className="icon" /><strong> Prix :</strong> {appartement.prix.toLocaleString()} FCFA / nuit</li>
             </ul>
 
-            {/* ✅ Options d’équipement */}
             {appartement.options?.length > 0 && (
               <div className="options">
                 <h5>Équipements</h5>
@@ -110,7 +100,6 @@ export default function AppartementDetail() {
           </div>
         </div>
 
-        {/* ✅ SECTION DROITE - Formulaire */}
         <div className="right-section">
           <h2 className="detail-title">Réservez cet appartement</h2>
           <form className="form-reservation">
@@ -145,7 +134,6 @@ export default function AppartementDetail() {
         </div>
       </div>
 
-      {/* ✅ MODAL ZOOM IMAGE */}
       {isZoomed && (
         <div className="zoom-overlay" onClick={() => setIsZoomed(false)}>
           <div className="zoom-content" onClick={(e) => e.stopPropagation()}>
