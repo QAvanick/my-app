@@ -12,6 +12,10 @@ import {
 } from "react-icons/fa";
 import appartements from "../data/appartements";
 import emailjs from "@emailjs/browser";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "../styles/AppartementDetail.css";
 
 export default function AppartementDetail() {
@@ -58,7 +62,7 @@ export default function AppartementDetail() {
       "hY_6Su8e5hNAK748L"
     )
       .then(() => {
-        alert("Réservation envoyée avec succès !");
+        toast.success("Réservation envoyée avec succès !");
         formRef.current.reset();
         setImageActive(appartement.imagePrincipale);
         setNombreJours(0);
@@ -66,7 +70,7 @@ export default function AppartementDetail() {
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi :", error);
-        alert("Une erreur est survenue lors de l'envoi.");
+        toast.error("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
       });
   };
 
@@ -142,7 +146,13 @@ export default function AppartementDetail() {
           <h2 className="detail-title">Réservez cet appartement</h2>
           <form className="form-reservation" onSubmit={handleSubmit} ref={formRef}>
             <label>Appartement</label>
-            <input type="text" name="appartement" value={appartement.titre} readOnly style={{ color: "green", fontWeight: "bold" }} />
+            <input
+              type="text"
+              name="appartement"
+              value={appartement.titre}
+              readOnly
+              style={{ color: "green", fontWeight: "bold" }}
+            />
 
             <label>Nom complet</label>
             <input type="text" name="nom" placeholder="Nom et prénom *" required />
@@ -184,10 +194,15 @@ export default function AppartementDetail() {
             <input type="number" name="personnes" min="1" defaultValue="1" required />
 
             <label>Nombre de jours</label>
-            <input type="number" name="nombreJours" value={nombreJours} readOnly />
+            <input type="number" name="jours" value={nombreJours} readOnly />
 
             <label>Coût total</label>
-            <input type="text" name="coutTotal" value={`${coutTotal.toLocaleString()} FCFA`} readOnly />
+            <input
+              type="text"
+              name="cout"
+              value={`${coutTotal.toLocaleString()} FCFA`}
+              readOnly
+            />
 
             <label>Message supplémentaire</label>
             <textarea name="message" placeholder="Message..."></textarea>
@@ -207,6 +222,9 @@ export default function AppartementDetail() {
           </div>
         </div>
       )}
+
+      {/* Container pour les notifications toast */}
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
     </>
   );
 }
