@@ -1,5 +1,7 @@
-import React, { useState, useRef } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+
+
 import {
   FaRulerCombined,
   FaBed,
@@ -12,7 +14,6 @@ import {
 } from "react-icons/fa";
 import appartements from "../data/appartements";
 import emailjs from "@emailjs/browser";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -20,10 +21,8 @@ import "../styles/AppartementDetail.css";
 
 export default function AppartementDetail() {
   const { id } = useParams();
-  const appartement = appartements.find(a => a.id === parseInt(id));
-
-  const galerie = Array.isArray(appartement?.galerie) ? appartement.galerie : [];
-  const [imageActive, setImageActive] = useState(appartement?.imagePrincipale || "");
+  const [appartement, setAppartement] = useState(null);
+  const [imageActive, setImageActive] = useState("");
   const [isZoomed, setIsZoomed] = useState(false);
 
   const [dateArrivee, setDateArrivee] = useState("");
@@ -33,6 +32,19 @@ export default function AppartementDetail() {
 
   const formRef = useRef();
 
+  // Recharge les données à chaque changement d'ID
+  useEffect(() => {
+    const apt = appartements.find((a) => a.id === parseInt(id));
+    setAppartement(apt);
+    if (apt) {
+      setImageActive(apt.imagePrincipale || "");
+      setDateArrivee("");
+      setDateDepart("");
+      setNombreJours(0);
+      setCoutTotal(0);
+    }
+  }, [id]);
+
   if (!appartement) {
     return (
       <div className="text-center p-5">
@@ -41,6 +53,8 @@ export default function AppartementDetail() {
       </div>
     );
   }
+
+  const galerie = Array.isArray(appartement.galerie) ? appartement.galerie : [];
 
   const calculerNombreJoursEtCout = (date1, date2) => {
     if (!date1 || !date2) return;
@@ -70,7 +84,7 @@ export default function AppartementDetail() {
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi :", error);
-        toast.error("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+        toast.error("Une erreur est survenue lors de l'envoi.");
       });
   };
 
@@ -124,7 +138,7 @@ export default function AppartementDetail() {
               <li><FaMapMarkerAlt className="icon" /><strong> Localisation :</strong> {appartement.localisation}</li>
               <li><FaRulerCombined className="icon" /><strong> Superficie :</strong> {appartement.superficie}</li>
               <li><FaBed className="icon" /><strong> Chambres :</strong> {appartement.chambres}</li>
-              <li><FaBath className="icon" /><strong> Salle de bain :</strong> {appartement.sallesDeBain}</li>
+              <li><FaBath className="icon" /><strong> Salles de bain :</strong> {appartement.sallesDeBain}</li>
               <li><FaUsers className="icon" /><strong> Capacité :</strong> {appartement.capacite} personnes</li>
               <li><FaMoneyBillWave className="icon" /><strong> Prix :</strong> {appartement.prix.toLocaleString()} FCFA / nuit</li>
             </ul>
@@ -223,6 +237,7 @@ export default function AppartementDetail() {
         </div>
       )}
 
+      {/* Suggestions en bas */}
       <div className="suggestions-section">
         <h3>Vous pourriez être intéressé par :</h3>
         <div className="suggestions-list">
@@ -230,7 +245,7 @@ export default function AppartementDetail() {
             .filter(a => a.id !== appartement.id)
             .slice(0, 3)
             .map((a) => (
-              <Link key={a.id} to={`/appartements/${a.id}`} className="suggestion-card">
+              <Link key={a.id} to={`/appartement/${a.id}`} className="suggestion-card">
                 <img src={a.imagePrincipale} alt={a.titre} />
                 <div className="suggestion-info">
                   <h5>{a.titre}</h5>
@@ -242,7 +257,7 @@ export default function AppartementDetail() {
         </div>
       </div>
 
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
+      <ToastContainer position="top-right" autoClose={5000} />
     </>
   );
 }
