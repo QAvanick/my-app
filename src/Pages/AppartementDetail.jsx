@@ -223,7 +223,25 @@ export default function AppartementDetail() {
         </div>
       )}
 
-      {/* Container pour les notifications toast */}
+      <div className="suggestions-section">
+        <h3>Vous pourriez être intéressé par :</h3>
+        <div className="suggestions-list">
+          {appartements
+            .filter(a => a.id !== appartement.id)
+            .slice(0, 3)
+            .map((a) => (
+              <Link key={a.id} to={`/appartements/${a.id}`} className="suggestion-card">
+                <img src={a.imagePrincipale} alt={a.titre} />
+                <div className="suggestion-info">
+                  <h5>{a.titre}</h5>
+                  <p>{a.localisation}</p>
+                  <p className="prix">{a.prix.toLocaleString()} FCFA / nuit</p>
+                </div>
+              </Link>
+            ))}
+        </div>
+      </div>
+
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
     </>
   );

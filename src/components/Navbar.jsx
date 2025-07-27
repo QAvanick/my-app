@@ -86,7 +86,7 @@ export default function MyNavbar() {
         <Offcanvas.Body>
           <p><strong>Adresse:</strong> Entrée Simbok, Yaoundé</p>
           <p><strong>Appelez-nous:</strong><br />
-            +237 655 00 49 95<br />
+            +237 656 94 79 51<br />
             +237 695 89 96 48<br />
             +33 616 63 42 37
           </p>
