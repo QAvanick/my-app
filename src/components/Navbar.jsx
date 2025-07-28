@@ -14,7 +14,7 @@ import france from "../assets/france.png";
 import anglaiss from "../assets/anglaiss.png";
 
 export default function MyNavbar() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(); // on garde global pour "footer" aussi éventuellement
   const [showInfo, setShowInfo] = useState(false);
 
   return (
@@ -31,14 +31,14 @@ export default function MyNavbar() {
           <Navbar.Toggle />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Link href="/" className="fw-bold">{t("home")}</Nav.Link>
-              <NavDropdown title={t("ourRentals")} className="fw-bold">
-                <NavDropdown.Item href="/Appartements">{t("apartments")}</NavDropdown.Item>
-                <NavDropdown.Item href="#studio">{t("modernStudios")}</NavDropdown.Item>
-                <NavDropdown.Item href="#rooms">{t("modernRooms")}</NavDropdown.Item>
+              <Nav.Link href="/" className="fw-bold">{t("navbar.home")}</Nav.Link>
+              <NavDropdown title={t("navbar.ourRentals")} className="fw-bold">
+                <NavDropdown.Item href="/Appartements">{t("navbar.apartments")}</NavDropdown.Item>
+                <NavDropdown.Item href="#studio">{t("navbar.modernStudios")}</NavDropdown.Item>
+                <NavDropdown.Item href="#rooms">{t("navbar.modernRooms")}</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/a-propos" className="fw-bold">{t("aboutUs")}</Nav.Link>
-              <Nav.Link href="/contact" className="fw-bold">{t("contactUs")}</Nav.Link>
+              <Nav.Link href="/a-propos" className="fw-bold">{t("navbar.aboutUs")}</Nav.Link>
+              <Nav.Link href="/contact" className="fw-bold">{t("navbar.contactUs")}</Nav.Link>
             </Nav>
 
             <div className="d-flex align-items-center gap-3">
@@ -68,7 +68,7 @@ export default function MyNavbar() {
 
               <Button style={{ backgroundColor: "#6f42c1", border: "none", color: "#fff" }}>
                 <Link to="/Appartements" style={{ color: "#fff", textDecoration: "none" }}>
-                  {t("bookNow")}
+                  {t("navbar.bookNow")}
                 </Link>
               </Button>
 
@@ -78,7 +78,7 @@ export default function MyNavbar() {
                 style={{ backgroundColor: "transparent", border: "none", boxShadow: "none", color: "#000" }}
                 onClick={() => setShowInfo(true)}
               >
-                ☰ <strong>{t("info")}</strong>
+                ☰ <strong>{t("navbar.info")}</strong>
               </Button>
             </div>
           </Navbar.Collapse>
@@ -93,13 +93,13 @@ export default function MyNavbar() {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <p><strong>{t("address")}:</strong> Entrée Simbok, Yaoundé</p>
-          <p><strong>{t("callUs")}:</strong><br />
+          <p><strong>{t("navbar.address")}:</strong> Entrée Simbok, Yaoundé</p>
+          <p><strong>{t("navbar.callUs")}:</strong><br />
             +237 656 94 79 51<br />
             +237 695 89 96 48<br />
             +33 616 63 42 37
           </p>
-          <p><strong>{t("email")}:</strong> contact@AppartEase.com</p>
+          <p><strong>{t("navbar.email")}:</strong> contact@AppartEase.com</p>
 
           <div className="d-flex gap-3 mt-3">
             <a href="https://facebook.com" target="_blank" rel="noreferrer">

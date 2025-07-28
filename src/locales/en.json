@@ -31,5 +31,21 @@
     "subscribe": "Subscribe",
     "rights": "All rights reserved.",
     "successToast": "🎉 Newsletter subscription successful!"
+  },
+  "contact": {
+    "title": "Contact",
+    "breadcrumbHome": "Home",
+    "breadcrumbCurrent": "/ Contact Us",
+    "heading": "📞 Contact Us",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "captchaError": "❌ Please verify the reCAPTCHA.",
+    "success": "✅ Message sent successfully!",
+    "error": "❌ An error occurred. Please try again.",
+    "required": "*"
   }
 }

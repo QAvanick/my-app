@@ -31,5 +31,21 @@
     "subscribe": "S'inscrire",
     "rights": "Tous droits réservés.",
     "successToast": "🎉 Inscription à la newsletter réussie !"
+  },
+  "contact": {
+    "title": "Contact",
+    "breadcrumbHome": "Accueil",
+    "breadcrumbCurrent": "/ Nous contacter",
+    "heading": "📞 Contactez-nous",
+    "name": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "subject": "Objet",
+    "message": "Message",
+    "send": "Envoyer",
+    "captchaError": "❌ Veuillez valider le reCAPTCHA.",
+    "success": "✅ Message envoyé avec succès !",
+    "error": "❌ Une erreur est survenue. Veuillez réessayer.",
+    "required": "*"
   }
 }
