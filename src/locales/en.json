@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "home": "HOME",
+    "ourRentals": "Our Rentals",
+    "apartments": "Apartments",
+    "modernStudios": "Modern Studios",
+    "modernRooms": "Modern Rooms",
+    "aboutUs": "ABOUT US",
+    "contactUs": "CONTACT US",
+    "bookNow": "BOOK NOW",
+    "info": "Info",
+    "address": "Address",
+    "callUs": "Call us",
+    "email": "Email"
+  },
+  "footer": {
+    "description": "Car rental & furnished apartments in Cameroon. Comfort, safety, professionalism.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "book": "Book",
+    "apartments": "Apartment Rentals",
+    "yaounde": "Furnished in Yaoundé",
+    "daily": "Daily rentals",
+    "wifi": "Wifi & Air Conditioning",
+    "secure": "Secure neighborhoods",
+    "newsletter": "Newsletter",
+    "subscribeText": "Sign up to receive our offers and news.",
+    "placeholder": "Your email",
+    "subscribe": "Subscribe",
+    "rights": "All rights reserved.",
+    "successToast": "🎉 Newsletter subscription successful!"
+  }
+}

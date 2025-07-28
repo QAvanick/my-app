@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 import logo from "../assets/logo.png";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
   const form = useRef();
   const [message, setMessage] = useState("");
 
@@ -18,8 +20,6 @@ export default function Footer() {
       () => {
         setMessage("");
         form.current.reset();
-
-        // Affiche le toast de succès
         const toastElement = document.getElementById('newsletterToast');
         const toast = new window.bootstrap.Toast(toastElement);
         toast.show();
@@ -39,49 +39,46 @@ export default function Footer() {
             <div className="col-md-3 mb-4">
               <img src={logo} alt="Logo" width="50" className="mb-2" />
               <h5 className="fw-bold">AppartEase</h5>
-              <p>
-                Location de voitures & appartements meublés au Cameroun.
-                Confort, sécurité, professionnalisme.
-              </p>
+              <p>{t("footer.description")}</p>
             </div>
 
             {/* Liens rapides */}
             <div className="col-md-3 mb-4">
-              <h6 className="fw-bold">Liens rapides</h6>
+              <h6 className="fw-bold">{t("footer.quickLinks")}</h6>
               <ul className="list-unstyled">
-                <li><a href="#accueil" className="text-light text-decoration-none">Accueil</a></li>
-                <li><a href="#apropos" className="text-light text-decoration-none">À propos</a></li>
-                <li><a href="#contact" className="text-light text-decoration-none">Contact</a></li>
-                <li><a href="#reserver" className="text-light text-decoration-none">Réserver</a></li>
+                <li><a href="#accueil" className="text-light text-decoration-none">{t("footer.home")}</a></li>
+                <li><a href="#apropos" className="text-light text-decoration-none">{t("footer.about")}</a></li>
+                <li><a href="#contact" className="text-light text-decoration-none">{t("footer.contact")}</a></li>
+                <li><a href="#reserver" className="text-light text-decoration-none">{t("footer.book")}</a></li>
               </ul>
             </div>
 
             {/* Appartements */}
             <div className="col-md-3 mb-4">
-              <h6 className="fw-bold">Locations d'appartements</h6>
+              <h6 className="fw-bold">{t("footer.apartments")}</h6>
               <ul className="list-unstyled">
-                <li><i className="bi bi-check-circle me-2 text-primary"></i> Meublés à Yaoundé</li>
-                <li><i className="bi bi-check-circle me-2 text-primary"></i> Locations journalières</li>
-                <li><i className="bi bi-check-circle me-2 text-primary"></i> Wifi & Climatisation</li>
-                <li><i className="bi bi-check-circle me-2 text-primary"></i> Quartiers sécurisés</li>
+                <li><i className="bi bi-check-circle me-2 text-primary"></i>{t("footer.yaounde")}</li>
+                <li><i className="bi bi-check-circle me-2 text-primary"></i>{t("footer.daily")}</li>
+                <li><i className="bi bi-check-circle me-2 text-primary"></i>{t("footer.wifi")}</li>
+                <li><i className="bi bi-check-circle me-2 text-primary"></i>{t("footer.secure")}</li>
               </ul>
             </div>
 
             {/* Newsletter */}
             <div className="col-md-3 mb-4">
-              <h6 className="fw-bold">Newsletter</h6>
-              <p>Inscrivez-vous pour recevoir nos offres et nouveautés.</p>
+              <h6 className="fw-bold">{t("footer.newsletter")}</h6>
+              <p>{t("footer.subscribeText")}</p>
               <form ref={form} onSubmit={sendEmail}>
                 <div className="input-group">
                   <input
                     type="email"
                     name="user_email"
                     className="form-control"
-                    placeholder="Votre email"
+                    placeholder={t("footer.placeholder")}
                     required
                   />
                   <button className="btn" type="submit" style={{ backgroundColor: "#6f42c1" }}>
-                    S'inscrire
+                    {t("footer.subscribe")}
                   </button>
                 </div>
               </form>
@@ -104,12 +101,12 @@ export default function Footer() {
           {/* Footer bottom */}
           <hr className="border-top border-light" />
           <div className="text-center">
-            <small>&copy; {new Date().getFullYear()} AppartEase. Tous droits réservés.</small>
+            <small>&copy; {new Date().getFullYear()} AppartEase. {t("footer.rights")}</small>
           </div>
         </div>
       </footer>
 
-      {/* ✅ Toast affiché en haut à droite sous la navbar */}
+      {/* ✅ Toast */}
       <div
         className="position-fixed top-0 end-0 p-3"
         style={{ zIndex: 9999, marginTop: "60px" }}
@@ -123,13 +120,13 @@ export default function Footer() {
         >
           <div className="d-flex">
             <div className="toast-body">
-              🎉 Inscription à la newsletter réussie !
+              {t("footer.successToast")}
             </div>
             <button
               type="button"
               className="btn-close btn-close-white me-2 m-auto"
               data-bs-dismiss="toast"
-              aria-label="Fermer"
+              aria-label="Close"
             ></button>
           </div>
         </div>

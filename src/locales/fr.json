@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "home": "ACCUEIL",
+    "ourRentals": "Nos Locations",
+    "apartments": "Appartements",
+    "modernStudios": "Studio Modernes",
+    "modernRooms": "Chambres Modernes",
+    "aboutUs": "A PROPOS",
+    "contactUs": "NOUS CONTACTER",
+    "bookNow": "RÉSERVEZ",
+    "info": "Infos",
+    "address": "Adresse",
+    "callUs": "Appelez-nous",
+    "email": "Email"
+  },
+  "footer": {
+    "description": "Location de voitures & appartements meublés au Cameroun. Confort, sécurité, professionnalisme.",
+    "quickLinks": "Liens rapides",
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact",
+    "book": "Réserver",
+    "apartments": "Locations d'appartements",
+    "yaounde": "Meublés à Yaoundé",
+    "daily": "Locations journalières",
+    "wifi": "Wifi & Climatisation",
+    "secure": "Quartiers sécurisés",
+    "newsletter": "Newsletter",
+    "subscribeText": "Inscrivez-vous pour recevoir nos offres et nouveautés.",
+    "placeholder": "Votre email",
+    "subscribe": "S'inscrire",
+    "rights": "Tous droits réservés.",
+    "successToast": "🎉 Inscription à la newsletter réussie !"
+  }
+}
