@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaHome, FaLock, FaHeadset, FaCreditCard } from "react-icons/fa";
+import TestimonialsSection from "../components/TestimonialsSection";
 
 export default function HomePage() {
   return (
@@ -8,29 +9,24 @@ export default function HomePage() {
       {/* === STYLES CSS INLINE === */}
       <style>
         {`
-          /* Reset global */
           * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
           }
-
           body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
           }
-
-          .carousel-inner .carousel-item {
-            transition: transform 0.6s ease-in-out;
-          }
-
           .carousel-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
           }
-
+          .carousel-inner .carousel-item {
+            transition: transform 0.6s ease-in-out;
+          }
           .feature-section {
             display: flex;
             justify-content: space-between;
@@ -41,7 +37,6 @@ export default function HomePage() {
             margin-top: 20px;
             flex-wrap: wrap;
           }
-
           .feature-item {
             display: flex;
             align-items: center;
@@ -51,22 +46,18 @@ export default function HomePage() {
             min-width: 200px;
             margin: 10px 0;
           }
-
           .icon {
             font-size: 24px;
             color: #6f42c1;
           }
-
           .feature-item h3 {
             font-size: 16px;
             margin-bottom: 5px;
           }
-
           .feature-item p {
             font-size: 12px;
             color: #666;
           }
-
           .btn {
             padding: 10px 20px;
             border: none;
@@ -78,11 +69,9 @@ export default function HomePage() {
             transition: background-color 0.3s ease;
             background-color: #6f42c1;
           }
-
           .btn:hover {
             background-color: #5d3fc2;
           }
-
           .image-section {
             display: flex;
             justify-content: space-between;
@@ -92,7 +81,6 @@ export default function HomePage() {
             max-width: 1000px;
             padding: 0 10px;
           }
-
           .image-wrapper {
             flex: 1;
             min-width: 280px;
@@ -102,26 +90,21 @@ export default function HomePage() {
             transition: transform 0.3s ease;
             margin: 0 10px;
           }
-
           .image-wrapper:hover {
             transform: scale(1.03);
           }
-
           .image-wrapper img {
             width: 100%;
             height: 340px;
             object-fit: cover;
             display: block;
           }
-
-          /* === NOUVEAU STYLE POUR LA SECTION APPARTEMENT === */
           .appartement-section {
             background-color: #ffffff;
             padding: 60px 20px;
             text-align: left;
             margin-top: 30px;
           }
-
           .appartement-container {
             display: flex;
             flex-wrap: wrap;
@@ -131,54 +114,45 @@ export default function HomePage() {
             margin: 0 auto;
             gap: 30px;
           }
-
           .appartement-text {
             flex: 1;
             min-width: 300px;
           }
-
           .appartement-text h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
             color: #333;
           }
-
           .appartement-text p {
             font-size: 1.1rem;
             line-height: 1.6;
             color: #555;
             margin-bottom: 30px;
           }
-
           .appartement-features {
             display: flex;
             flex-wrap: wrap;
             gap: 20px 0;
           }
-
           .appartement-feature {
             display: flex;
             align-items: flex-start;
             gap: 10px;
             width: 48%;
           }
-
           .appartement-feature .icon {
             font-size: 24px;
             color: #6f42c1;
             flex-shrink: 0;
           }
-
           .appartement-feature h3 {
             font-size: 1rem;
             margin-bottom: 5px;
           }
-
           .appartement-feature p {
             font-size: 0.9rem;
             color: #666;
           }
-
           .appartement-image {
             flex: 1;
             min-width: 300px;
@@ -186,7 +160,6 @@ export default function HomePage() {
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
           }
-
           .appartement-image img {
             width: 100%;
             height: auto;
@@ -195,107 +168,43 @@ export default function HomePage() {
         `}
       </style>
 
-      {/* === SLIDER / CAROUSEL === */}
+      {/* === SLIDER === */}
       <div id="heroCarousel" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
-          {/* Slide 1 */}
-          <div className="carousel-item active">
-            <div
-              className="d-flex align-items-center justify-content-center text-white text-center"
-              style={{
-                backgroundImage:
-                  "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg ')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "500px",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  backgroundColor: "rgba(0,0,0,0.5)",
-                }}
-              ></div>
-
-              <div style={{ zIndex: 2 }}>
-                <h1 className="display-4 fw-bold">Bienvenue sur AppartEase</h1>
-                <p>Location d'appartements modernes au Cameroun</p>
-                <a href="#contact" className="btn">RÉSERVEZ</a>
+          {["Bienvenue sur AppartEase", "Studios confortables & modernes", "Chambres élégantes & équipées"].map(
+            (title, i) => (
+              <div className={`carousel-item ${i === 0 ? "active" : ""}`} key={i}>
+                <div
+                  className="d-flex align-items-center justify-content-center text-white text-center"
+                  style={{
+                    backgroundImage:
+                      "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    height: "500px",
+                    position: "relative",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      backgroundColor: "rgba(0,0,0,0.5)",
+                    }}
+                  ></div>
+                  <div style={{ zIndex: 2 }}>
+                    <h1 className="display-5 fw-bold">{title}</h1>
+                    <p>Location d'appartements modernes au Cameroun</p>
+                    <a href="#contact" className="btn">RÉSERVEZ</a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          {/* Slide 2 */}
-          <div className="carousel-item">
-            <div
-              className="d-flex align-items-center justify-content-center text-white text-center"
-              style={{
-                backgroundImage:
-                  "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg ')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "500px",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  backgroundColor: "rgba(0,0,0,0.5)",
-                }}
-              ></div>
-
-              <div style={{ zIndex: 2 }}>
-                <h1 className="display-5 fw-bold">Studios confortables & modernes</h1>
-                <p>Conçus pour votre bien-être au quotidien</p>
-                <a href="#contact" className="btn">RÉSERVEZ</a>
-              </div>
-            </div>
-          </div>
-
-          {/* Slide 3 */}
-          <div className="carousel-item">
-            <div
-              className="d-flex align-items-center justify-content-center text-white text-center"
-              style={{
-                backgroundImage:
-                  "url('https://www.espaces-atypiques.com/wp-content/uploads/149294/4260EP/149294-4260EP-52362945h.jpg ')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "500px",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  backgroundColor: "rgba(0,0,0,0.5)",
-                }}
-              ></div>
-
-              <div style={{ zIndex: 2 }}>
-                <h1 className="display-5 fw-bold">Chambres élégantes & équipées</h1>
-                <p>Pour des séjours courts ou longs</p>
-                <a href="#contact" className="btn">RÉSERVEZ</a>
-              </div>
-            </div>
-          </div>
+            )
+          )}
         </div>
-
-        {/* Contrôles du slider */}
         <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Précédent</span>
@@ -312,37 +221,24 @@ export default function HomePage() {
           <div className="appartement-text">
             <h2>Nos appartements modernes et bien équipés</h2>
             <p>
-              Découvrez nos appartements conçus pour votre confort et votre bien-être. Chaque logement est doté de technologies modernes et de commodités haut de gamme pour vous offrir un séjour inoubliable.
+              Découvrez nos appartements conçus pour votre confort et votre bien-être. Chaque logement est doté de
+              technologies modernes et de commodités haut de gamme pour vous offrir un séjour inoubliable.
             </p>
             <div className="appartement-features">
-              <div className="appartement-feature">
-                <FaHome className="icon" />
-                <div>
-                  <h3>Chambres spacieuses</h3>
-                  <p>Des espaces bien aménagés pour votre détente.</p>
+              {[
+                { title: "Chambres spacieuses", desc: "Des espaces bien aménagés pour votre détente." },
+                { title: "Cuisine équipée", desc: "Four, micro-ondes, réfrigérateur et plus encore." },
+                { title: "Salon moderne", desc: "Un espace convivial pour profiter de moments en famille ou entre amis." },
+                { title: "Balcon ou terrasse", desc: "Profitez d’un espace extérieur pour vous détendre." },
+              ].map((item, idx) => (
+                <div className="appartement-feature" key={idx}>
+                  <FaHome className="icon" />
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="appartement-feature">
-                <FaHome className="icon" />
-                <div>
-                  <h3>Cuisine équipée</h3>
-                  <p>Four, micro-ondes, réfrigérateur et plus encore.</p>
-                </div>
-              </div>
-              <div className="appartement-feature">
-                <FaHome className="icon" />
-                <div>
-                  <h3>Salon moderne</h3>
-                  <p>Un espace convivial pour profiter de moments en famille ou entre amis.</p>
-                </div>
-              </div>
-              <div className="appartement-feature">
-                <FaHome className="icon" />
-                <div>
-                  <h3>Balcon ou terrasse</h3>
-                  <p>Profitez d’un espace extérieur pour vous détendre.</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -355,7 +251,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* === SECTION DES OPTIONS === */}
+      {/* === SECTION OPTIONS === */}
       <div className="feature-section">
         <div className="feature-item">
           <FaHome className="icon" />
@@ -387,11 +283,11 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* === SECTION AVEC 2 IMAGES === */}
+      {/* === SECTION IMAGES === */}
       <div className="image-section">
         <div className="image-wrapper">
           <img
-            src=" https://www.mubawab-media.com/ad/7/605/820F/h/Les%20Jardins%20de%20Mesnana%20Golf%2010_23373814_30445580_37956215_37956293_37956509.jpg "
+            src="https://www.mubawab-media.com/ad/7/605/820F/h/Les%20Jardins%20de%20Mesnana%20Golf%2010_23373814_30445580_37956215_37956293_37956509.jpg"
             alt="Appartement moderne 1"
           />
         </div>
@@ -402,6 +298,9 @@ export default function HomePage() {
           />
         </div>
       </div>
+
+      {/* === SECTION TÉMOIGNAGES === */}
+      <TestimonialsSection />
     </div>
   );
 }
