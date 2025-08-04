@@ -6,14 +6,14 @@ const testimonials = [
   {
     name: "Marie Dupont",
     title: "Locataire",
-    image: "https://via.placeholder.com/150",
+    image: "https://tse4.mm.bing.net/th/id/OIP.IGNf7GuQaCqz_RPq5wCkPgHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     review: "Bel appartement, bien situé et propre. Je recommande !",
     rating: 5,
   },
   {
     name: "Ali Ndongo",
     title: "Locataire",
-    image: "https://via.placeholder.com/150",
+    image: "https://www.gabrielgorgi.com/wp-content/uploads/2019/12/01.jpg",
     review: "Accueil très professionnel et logement impeccable.",
     rating: 4,
   },
@@ -25,7 +25,7 @@ export default function TestimonialsSection() {
     <section className="py-5 bg-light">
       <div className="container">
         <h2 className="text-center mb-4">Avis de nos clients</h2>
-        <Carousel indicators={false} interval={5000} slide={true}>
+        <Carousel indicators={false} interval={2000} slide={true}>
           {testimonials.map((t, idx) => (
             <Carousel.Item key={idx}>
               <div className="text-center px-4">
