@@ -11,7 +11,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Ali Ndongo",
+    name: "Ali baba",
     title: "Locataire",
     image: "https://www.gabrielgorgi.com/wp-content/uploads/2019/12/01.jpg",
     review: "Accueil très professionnel et logement impeccable.",
