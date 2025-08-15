@@ -21,7 +21,7 @@ const testimonials = [
 
   {
     name: "jordan free",
-    title: "Locataire",
+    title: "Locataire pro",
     image: "https://www.gabrielgorgi.com/wp-content/uploads/2019/12/01.jpg",
     review: "Accueil très professionnel et logement impeccable.",
     rating: 4,
