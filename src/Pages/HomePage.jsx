@@ -219,7 +219,8 @@ export default function HomePage() {
       <section className="appartement-section">
         <div className="appartement-container">
           <div className="appartement-text">
-            <h2>Nos appartements modernes et bien équipés</h2>
+            <h2 style={{ color: '#6f42c1' }}>Nos appartements modernes et bien équipés</h2>
+
             <p>
               Découvrez nos appartements conçus pour votre confort et votre bien-être. Chaque logement est doté de
               technologies modernes et de commodités haut de gamme pour vous offrir un séjour inoubliable.
