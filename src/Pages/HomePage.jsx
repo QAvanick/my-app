@@ -198,7 +198,7 @@ export default function HomePage() {
                   <div style={{ zIndex: 2 }}>
                     <h1 className="display-5 fw-bold">{title}</h1>
                     <p>Location d'appartements modernes au Cameroun</p>
-                    <a href="#contact" className="btn">RÉSERVEZ</a>
+                    <a href="/Appartements" className="btn">RÉSERVEZ</a>
                   </div>
                 </div>
               </div>
