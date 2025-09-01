@@ -1,11 +1,38 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaHome, FaLock, FaHeadset, FaCreditCard } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";   // ✅ Import Helmet
 import TestimonialsSection from "../components/TestimonialsSection";
 
 export default function HomePage() {
   return (
     <div>
+      {/* === SEO / META TAGS === */}
+      <Helmet>
+        <title>Appart Ease | Location d’appartements modernes au Cameroun</title>
+        <meta
+          name="description"
+          content="Appart Ease propose des appartements modernes, studios et chambres confortables au Cameroun. Réservez dès maintenant et profitez d’un logement bien équipé."
+        />
+        <meta
+          name="keywords"
+          content="location appartement Cameroun, studio moderne, chambres à louer, Appart Ease"
+        />
+
+        {/* Balises Open Graph (Facebook, WhatsApp, LinkedIn) */}
+        <meta property="og:title" content="Appart Ease | Appartements modernes au Cameroun" />
+        <meta property="og:description" content="Trouvez des appartements, studios et chambres modernes avec Appart Ease." />
+        <meta property="og:image" content="https://i.ytimg.com/vi/G-V2QET0a-w/maxresdefault.jpg" />
+        <meta property="og:url" content="https://appart-ease.com/" />
+        <meta property="og:type" content="website" />
+
+        {/* Balises Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appart Ease | Location d’appartements modernes" />
+        <meta name="twitter:description" content="Des appartements modernes et bien équipés au Cameroun." />
+        <meta name="twitter:image" content="https://i.ytimg.com/vi/G-V2QET0a-w/maxresdefault.jpg" />
+      </Helmet>
+
       {/* === STYLES CSS INLINE === */}
       <style>
         {`
