@@ -46,10 +46,10 @@ export default function Footer() {
             <div className="col-md-3 mb-4">
               <h6 className="fw-bold">{t("footer.quickLinks")}</h6>
               <ul className="list-unstyled">
-                <li><a href="#accueil" className="text-light text-decoration-none">{t("footer.home")}</a></li>
-                <li><a href="#apropos" className="text-light text-decoration-none">{t("footer.about")}</a></li>
-                <li><a href="#contact" className="text-light text-decoration-none">{t("footer.contact")}</a></li>
-                <li><a href="#reserver" className="text-light text-decoration-none">{t("footer.book")}</a></li>
+                <li><a href="/" className="text-light text-decoration-none">{t("footer.home")}</a></li>
+                <li><a href="/a-propos" className="text-light text-decoration-none">{t("footer.about")}</a></li>
+                <li><a href="/contact" className="text-light text-decoration-none">{t("footer.contact")}</a></li>
+                <li><a href="/Appartements" className="text-light text-decoration-none">{t("footer.book")}</a></li>
               </ul>
             </div>
 
